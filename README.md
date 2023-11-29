@@ -58,3 +58,8 @@
 
 ### 其他字段
 - `license`, `last_scraped`
+
+## review文件（自然语言处理）
+- office
+- quarantine
+- covid
