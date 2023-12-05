@@ -146,6 +146,8 @@ ax.set_xlim([0,500]);
 
 ( 5 points; Answer due Week 8 )
 
+The data on Airbnb listings was collected by Inside Airbnb, which employs web scraping to systematically compile information from publicly available listings on the Airbnb platform. This includes data such as geographic coordinates, host details, pricing strategies, and customer reviews. The UK Government's COVID-19 data was collated via a dedicated data portal, which aggregates a wide range of public health statistics derived from official health databases and reporting systems, providing a comprehensive overview of the pandemic's progression.
+
 :::
 
 ## 4. How does the method of collection impact the completeness and/or accuracy of its representation of the process it seeks to study, and what wider issues does this raise?
@@ -153,6 +155,8 @@ ax.set_xlim([0,500]);
 ::: {.duedate}
 
 ( 11 points; Answer due Week 9 )
+
+The web scraping method used by Inside Airbnb may not capture every listing or update in real-time, potentially leading to gaps in data or lag in reflecting current market conditions. Government data is typically robust but may be limited by reporting delays or revisions. These collection methods could affect the completeness and accuracy of the representation of Airbnb's market dynamics and the pandemic's impact on housing. Wider issues include the reliability of secondary data sources for policy formulation and the ethical considerations around the use of scraped data.
 
 :::
 
