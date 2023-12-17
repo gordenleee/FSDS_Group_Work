@@ -48,6 +48,7 @@ jupyter:
     name: python3
 ---
 
+
 ## Declaration of Authorship {.unnumbered .unlisted}
 
 We, [insert your group's names], confirm that the work presented in this assessment is our own. Where information has been derived from other sources, we confirm that this has been indicated in the work. Where a Large Language Model such as ChatGPT has been used we confirm that we have made its contribution to the final submission clear.
@@ -88,106 +89,71 @@ Are there any areas on which you would appreciate more detailed feedback if we'r
 
 # Response to Questions
 
-```{python}
-import os
-import pandas as pd
-```
-
-```{python}
-host = 'https://orca.casa.ucl.ac.uk'
-path = '~jreades/data'
-file = '2022-09-10-listings.csv.gz'
-url  = f'{host}/{path}/{file}'
-
-if os.path.exists(file):
-  df = pd.read_csv(file, compression='gzip', low_memory=False)
-else: 
-  df = pd.read_csv(url, compression='gzip', low_memory=False)
-  df.to_csv(file)
-```
-
 ## 1. Who collected the data?
 
-::: {.duedate}
-
-( 2 points; Answer due Week 7 )
-.
-
-:
-
-An inline citation: As elucidated by Inside Airbnb (n.d.), this independent entity systematically collects detailed data points on Airbnb listings, such as location coordinates, host information, pricing, reviews, and occupancy rates. Concurrently, the UK Government's COVID-19 data portal (UK Government, n.d.) aggregates comprehensive statistics, including daily infection rates, hospitalization numbers, testing figures, and vaccination rates across various regions, including London.
-
-A parenthetical citation: Detailed data on Airbnb's market, encompassing fields like listing amenities, length of stay, and host response rates, has been methodically collated by Inside Airbnb (Inside Airbnb, n.d.). Simultaneously, the UK Government has been meticulously recording public health metrics such as case numbers, the R reproduction number, and local alert levels, essential for public awareness and policy-making during the pandemic (UK Government, n.d.).... 
+Inside Airbnb is an independent research project involving volunteers and researchers who systematically collect detailed data about Airbnb listings. This data includes information such as the geographical location of listings, host details, pricing, customer reviews, and occupancy rates.
 
 ## 2. Why did they collect it?
 
-::: {.duedate}
-
-( 4 points; Answer due Week 7 )
-
-
-An inline citation: Inside Airbnb (n.d.) gathered data to shed light on how short-term rentals influence local housing markets, while the UK Government's data portal (n.d.) aims to track the progress and impact of the COVID-19 pandemic, facilitating informed decision-making and policy development.
-
-A parenthetical citation: The collection of data by Inside Airbnb (n.d.) serves to enhance transparency around the effects of short-term rentals on housing, complemented by the UK Government's COVID-19 data (n.d.), which is essential for understanding the pandemic's broader socioeconomic impacts, including its influence on housing and rental markets.
-:::
-
-```{python}
-print(f"Data frame is {df.shape[0]:,} x {df.shape[1]:,}")
-```
-
-```{python}
-ax = df.host_listings_count.plot.hist(bins=50);
-ax.set_xlim([0,500]);
-```
+The primary purpose of Inside Airbnb's data collection is to gain in-depth insights into the functioning of the Airbnb housing market and its impact on local housing markets and communities. The research aims to address questions related to hosts, rental pricing, property availability, market competition, and housing policies.
 
 ## 3. How was the data collected?  
 
-::: {.duedate}
-
-( 5 points; Answer due Week 8 )
-
-The data on Airbnb listings was collected by Inside Airbnb, which employs web scraping to systematically compile information from publicly available listings on the Airbnb platform. This includes data such as geographic coordinates, host details, pricing strategies, and customer reviews. The UK Government's COVID-19 data was collated via a dedicated data portal, which aggregates a wide range of public health statistics derived from official health databases and reporting systems, providing a comprehensive overview of the pandemic's progression.
-
-:::
+Inside Airbnb mainly using web scraping and accessing Airbnb's Application Programming Interface (API) to compile information from publicly available listings on the Airbnb platform.
+API Access: One common method is to access Airbnb's API, which provides structured and up-to-date data directly from Airbnb's servers.
+Web Scraping: If API access is unavailable or does not provide the necessary data, web scraping can be used. Web scraping involves writing code to extract information from Airbnb's website[@prentice2023addressing]. 
 
 ## 4. How does the method of collection impact the completeness and/or accuracy of its representation of the process it seeks to study, and what wider issues does this raise?
 
-::: {.duedate}
+The Method of Collection Impacts Data Integrity and Accuracy: 
 
-( 11 points; Answer due Week 9 )
+Since the data is collected from the Airbnb inside website, its completeness and accuracy depend on the information publicly available on the site. If certain details are not provided on the website, or if Airbnb changes its data format or structure, these details might not be captured accurately[@alsudais2021incorrect].
 
-The web scraping method used by Inside Airbnb may not capture every listing or update in real-time, potentially leading to gaps in data or lag in reflecting current market conditions. Government data is typically robust but may be limited by reporting delays or revisions. These collection methods could affect the completeness and accuracy of the representation of Airbnb's market dynamics and the pandemic's impact on housing. Wider issues include the reliability of secondary data sources for policy formulation and the ethical considerations around the use of scraped data.
+Dynamism of Data: 
 
-:::
+Information on the Airbnb website is dynamic, with listings constantly being added, removed, or modified. Inside Airbnb uses a web scraping method to periodically capture or update each listing, which could lead to data gaps or inaccuracies. Therefore, the timing of data collection affects accuracy, as it might not reflect these changes promptly.(Alsudais, A., 2021) Based on these flawed results, erroneous decisions may be made[@prentice2023addressing].
 
 ## 5. What ethical considerations does the use of this data raise? 
 
-::: {.duedate}
+Quality and Integrity of Data: 
 
-( 18 points; Answer due {{< var assess.group-date >}} )
+Data sources in the sharing economy research may have limitations.[@prentice2023addressing]Due to privacy, competition, and regulatory factors, Airbnb often hesitate to share data.[@benitez2020impacts]Researchers typically collect data directly from Airbnb.[@dolnicar2021evolution] However, web-scraped data can have inaccuracies or errors for various reasons, such as guests using different distribution channels or direct bookings, listings may being fraudulent, duplicates, inactive tests, and infrequently booked[@adamiak2022current].This practice could affect future research based on these studies and mislead practitioners relying on findings for commercial practices[@prentice2023addressing].Therefore, these limitations should be considered.
 
-:::
+Transparency and Reliability: 
+
+The scientific method requires evidence to validate hypotheses, data collection is a vital part of science. Computer scientists use data, sometimes obtained unethically or illegally, for research and policy-making. While reusing datasets promotes scientific repeatability, it may raises ethical and legal concerns.[@thomas2017ethical] Therefore, when presenting analysis results, it is necessary to ensure the transparency of the process, reliability of the results, and repeatability of the analysis.
+
 
 ## 6. With reference to the data (*i.e.* using numbers, figures, maps, and descriptive statistics), what does an analysis of Hosts and Listing types suggest about the nature of Airbnb lets in London? 
 
-::: {.duedate}
-
-( 15 points; Answer due {{< var assess.group-date >}} )
-
-:::
-
 ## 7. Drawing on your previous answers, and supporting your response with evidence (e.g. figures, maps, and statistical analysis/models), how *could* this data set be used to inform the regulation of Short-Term Lets (STL) in London? 
 
-::: {.duedate}
+This research analyzed the factors that affect the price of Airbnb in London using panel data regression, paying special attention to market activity and the type of housing (whole house, private room or shared room). We used data from 2019 (before the epidemic) and 2023 (after the epidemic) to observe the impact of COVID-19 on the market. In addition, in the study, we also paid special attention to the impact of the epidemic (2020.3.17-2021.12.13) [@gla2021covid] and its potential restrictions on house prices. The logarithmic conversion is used to analyze price data, which helps to understand price changes more accurately.
 
-( 45 points; Answer due {{< var assess.group-date >}} )
+During the COVID-19 pandemic, Airbnb prices in London dropped by approximately 26.79% compared to 2019. By 2023, there was only a modest 1.82% increase, suggesting a gradual market recovery from the pandemic's impact. In addition, we found that with the increase of market activity, the average price will increase by about 11.82%. 
 
-:::
+Compared to whole houses, shared rooms are 64.27% cheaper, while private rooms are 59.03% less expensive. The drop in private room prices likely reflects economic factors during the pandemic, as travelers sought more affordable options. Conversely, shared room prices declined primarily due to health concerns, as shared spaces were considered higher risk during the pandemic, reducing demand. 
 
-## Sustainable Authorship Tools
+Finally, we observed that the prices of housing resources that remained in demand and were evaluated by customers during the epidemic experienced a relatively modest average decline of 2.06%. This suggests that hosts reduced prices strategically to maintain appeal during the pandemic. These findings offer valuable insights into the pandemic's impact on the short-term rental market and are relevant for policy considerations. Overall, the analysis supports the idea of increased price flexibility in the Airbnb market during global crises.
 
-Your QMD file should automatically download your BibTeX file. We will then re-run the QMD file to generate the output successfully.
+With the epidemic known to significantly affect Airbnb prices, this paper will determine the impact of the epidemic market (prices) on host responses.
 
-Written in Markdown and generated from [Quarto](https://quarto.org/). Fonts used: [Spectral](https://fonts.google.com/specimen/Spectral) (mainfont), [Roboto](https://fonts.google.com/specimen/Roboto) (<span style="font-family:Sans-Serif;">sansfont</span>) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains%20Mono) (`monofont`). 
+The first type of response: listings that offer at least a 14-night stay. During periods of low demand, hosts adjusted their offerings to the changing conditions. New listings include renting second homes for residents who need to work or isolate at a distance. This type of accommodation should be longer than the usual short term trips, but shorter than long term rentals (which offer a minimum of 14 nights).
+
+The second type of response: listings whose descriptions include the words Office, Covid, or Quarantine indicate a change in the landlord's strategy for renting in response to the outbreak.
+
+In this paper, a geographically weighted regression is conducted to calculate the correlation between the price of listings and landlord responses in London's 33 boroughs, using the average price in the region as the independent variable and the number of landlords in the region in each of the two types of response as the dependent variable.
+
+The global Moran index for 2019-2022 all ranged from 0.476-0.51 indicating spatial autocorrelation of the price independent variable, with high values clustered in the Westminster and City of London areas.
+
+According to R2 (the extent to which changes in landlord measures are explained by price), regional average prices are able to explain changes in response to the first category of response measures well in 2019-2022.The correlation coefficient (the extent to which price affects landlord measures) improves from around 0.5 to around 2.2 between 2019 and 2022, and then diminishes to around 1 in 2022, responding to the fact that during the epidemic, the price factor significantly affected the first category of response measures, with North London Boroughs having a slightly higher degree of influence than South.
+
+According to the R2 results, the extent to which regional average prices explain changes in Type 2 landlord measures decreases each year from 2020-2022, from around 0.7 to around 0.3. The correlation coefficients reach 1.3-1.4 in 2020, reflecting a stronger degree of influence. In 2021, the level of influence remains at 0.67-0.72. In 2022, the level of influence plummets to around 0.2. This suggests that as the epidemic situation eases, the influence of price on the Type II landlord measure decreases significantly.
+
+This study illustrates that there is a negative impact of the epidemic volatility on the Airbnb market, which in turn responds to the impact of the Airbnb market on landlord strategies. Insights are provided for the regulation of short-term lettings (STL) in London:
+
+1. Develop a price guidance policy to assess price elasticity. Given that pandemics lead to price volatility, regulators could recommend implementing a price transparency policy that requires clearly stated price adjustments by landlords for special periods.
+
+2. Focus on landlord strategy changes. The impact of prices on landlord measures suggests flexibility to adjust prices during a pandemic. Regulators should keep an eye on these strategies and provide guidance where necessary, adjusting them based on the latest market data to ensure the policy is effective.
 
 ## References
